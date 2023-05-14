@@ -10,17 +10,25 @@
       padding: 0;
       font-family: Arial, sans-serif;
       background: linear-gradient(to right, red, orange, yellow, green, blue, indigo, violet);
+      display: flex;
+      flex-direction: column;
+      height: 100vh;
     }
 
     main {
       width: 100%;
       padding: 10px;
       text-align: center;
+      flex: 1;
+    }
+
+    .bottom-space {
+      margin-bottom: 10px;
     }
 
     button {
       display: block;
-      margin: 15px auto;
+      margin: 15px auto 10px auto;
       padding: 10px;
       background: #333;
       color: #fff;
@@ -37,7 +45,6 @@
 
     p {
       font-size: 16px;
-      margin-bottom: 20px;
     }
 
     .box {
@@ -58,19 +65,21 @@
       font-weight: bold;
       color: red;
       font-size: 14px;
-      margin-top: 15px;
+      margin-top: 5px;
+      margin-bottom: 0;
     }
   </style>
 </head>
 <body>
   <main>
     <h1>로또 당첨 예상 번호 생성기</h1>
-    <p>로또는 1부터 45까지의 숫자 중 7개의 숫자를 추첨합니다. 본 예상 번호 생성기는 과거 당첨된 번호를 기반으로 생성한 것으로, 실제 당첨에 대한 기대가 과도하면 안됩니다.</p>
+    <p class="bottom-space">로또는 1부터 45까지의 숫자 중 7개의 숫자를 추첨합니다. 본 예상 번호 생성기는 과거 당첨된 번호를 기반으로 생성한 것으로, 실제 당첨에 대한 기대가 과도하면 안됩니다.</p>
     <div id="box" class="box"></div>
     <div id="bonus" class="bonus"></div>
     <button onclick="generateNumber()">생성하기</button>
     <p class="warning">주의: 본 예상 번호 생성기는 참고 목적으로만 사용해주세요. 당첨을 보장하거나 의존할 수 없습니다.</p>
   </main>
+</body>
 
   <script>
     function generateNumber() {
@@ -106,5 +115,4 @@
       bonusElement.innerHTML = bonusResult;
     }
   </script>
-</body>
 </html>
