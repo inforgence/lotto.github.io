@@ -1,97 +1,110 @@
 <!DOCTYPE html>
 <html>
 <head>
-	<meta charset="UTF-8">
-	<meta name="viewport" content="width=device-width, initial-scale=1">
-	<title>로또 당첨 예상번호 생성기</title>
-	<style>
-body {
-    font-family: Arial, sans-serif;
-    background-image: linear-gradient(to bottom, red, orange, yellow, green, blue, indigo, violet);
-    color: red;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    height: 100vh;
-    margin: 0;
-}
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>로또 당첨 예상 번호 생성기</title>
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+      font-family: Arial, sans-serif;
+      background: linear-gradient(to right, red, orange, yellow, green, blue, indigo, violet);
+    }
 
-.container {
-    text-align: center;
-    max-width: 600px;
-    padding: 20px;
-    background-color: rgba(255, 255, 255, 0.7);
-    border-radius: 5px;
-}
+    main {
+      width: 100%;
+      padding: 10px;
+      text-align: center;
+    }
 
-input, textarea, button {
-    padding: 10px;
-    font-size: 1rem;
-    width: 100%;
-}
+    button {
+      display: block;
+      margin: 15px auto;
+      padding: 10px;
+      background: #333;
+      color: #fff;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+      font-size: 18px;
+    }
 
-button {
-    background-color: red;
-    color: yellow;
-    border: none;
-    cursor: pointer;
-    margin-top: 10px;
-}
+    h1 {
+      margin-top: 0;
+      font-size: 28px;
+    }
 
-#result {
-    margin-top: 20px;
-}
+    p {
+      font-size: 16px;
+      margin-bottom: 20px;
+    }
 
-.footer {
-    position: absolute;
-    bottom: 5px;
-}
-</style>
+    .box {
+      margin-top: 25px;
+      padding: 10px;
+      text-align: center;
+      font-size: 28px;
+      border: 2px solid red;
+      background-color: yellow;
+    }
+
+    .bonus {
+      font-size: 18px;
+      margin-top: 10px;
+    }
+
+    .warning {
+      font-weight: bold;
+      color: red;
+      font-size: 14px;
+      margin-top: 15px;
+    }
+  </style>
 </head>
 <body>
-	<main>
-		<h1>로또 당첨 예상번호 생성기</h1>
-		<p>로또는 1부터 45까지의 숫자 중 7개의 숫자를 추첨합니다. <br>본 예상 번호 생성기는 과거 당첨된 번호를 기반으로 생성한 것으로, <br>실제 당첨에 대한 기대가 과도하면 안됩니다.</p>
-		<div id="box" class="box"></div>
-		<div id="bonus" class="bonus"></div>
-		<button onclick="generateNumber()">생성하기</button>
-		<p class="warning">주의: 본 예상 번호 생성기는 참고 목적으로만 사용해주세요. <br>당첨을 보장하거나 의존할 수 없습니다.</p>
-	</main>
+  <main>
+    <h1>로또 당첨 예상 번호 생성기</h1>
+    <p>로또는 1부터 45까지의 숫자 중 7개의 숫자를 추첨합니다. 본 예상 번호 생성기는 과거 당첨된 번호를 기반으로 생성한 것으로, 실제 당첨에 대한 기대가 과도하면 안됩니다.</p>
+    <div id="box" class="box"></div>
+    <div id="bonus" class="bonus"></div>
+    <button onclick="generateNumber()">생성하기</button>
+    <p class="warning">주의: 본 예상 번호 생성기는 참고 목적으로만 사용해주세요. 당첨을 보장하거나 의존할 수 없습니다.</p>
+  </main>
 
-	<script>
-		function generateNumber() {
-			var maxNumber = 45;
-			var numbers = [];
-			var result = "";
-			var bonusResult = "";
+  <script>
+    function generateNumber() {
+      var maxNumber = 45;
+      var numbers = [];
+      var result = "";
+      var bonusResult = "";
 
-			for (var i = 1; i <= maxNumber; i++) {
-				numbers.push(i);
-			}
+      for (var i = 1; i <= maxNumber; i++) {
+        numbers.push(i);
+      }
 
-			for (var i = 0; i < 6; i++) {
-				var randomIndex = Math.floor(Math.random() * numbers.length);
-				var number = numbers[randomIndex];
-				numbers.splice(randomIndex, 1);
+      for (var i = 0; i < 6; i++) {
+        var randomIndex = Math.floor(Math.random() * numbers.length);
+        var number = numbers[randomIndex];
+        numbers.splice(randomIndex, 1);
 
-				result += number;
+        result += number;
 
-				if (i < 5) {
-					result += ", ";
-				}
-			}
+        if (i < 5) {
+          result += ", ";
+        }
+      }
 
-			var randomIndex = Math.floor(Math.random() * numbers.length);
-			var bonusNumber = numbers[randomIndex];
-			bonusResult = "보너스 숫자: " + bonusNumber;
+      var randomIndex = Math.floor(Math.random() * numbers.length);
+      var bonusNumber = numbers[randomIndex];
+      bonusResult = "보너스 숫자: " + bonusNumber;
 
-			var boxElement = document.getElementById("box");
-			boxElement.innerHTML = result;
+      var boxElement = document.getElementById("box");
+      boxElement.innerHTML = result;
 
-			var bonusElement = document.getElementById("bonus");
-			bonusElement.innerHTML = bonusResult;
-		}
-	</script>
+      var bonusElement = document.getElementById("bonus");
+      bonusElement.innerHTML = bonusResult;
+    }
+  </script>
 </body>
 </html>
